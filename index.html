@@ -15,31 +15,35 @@
 
   <body>
     <div class="container-sm mt-5 mb-5 d-flex container-search">
-      <input class="form-control mr-2" placeholder="Введите запрос" />
-      <button type="button" class="btn btn-primary">Найти</button>
+      <input class="form-control mr-2 input-search" placeholder="Введите запрос" />
+      <button type="button" class="btn btn-primary button-search">Найти</button>
     </div>
 
     <ul class="container"></ul>
 
-    <template class="card-template"
-      ><button
-        class="btn btn-primary"
-        type="button"
-        data-toggle="collapse"
-        data-target="#collapseExample"
-        aria-expanded="false"
-      >
-        Кнопка с атрибутом data-target
-      </button>
+    <template class="card-template">
+      <li class="card">
+        <h2
+          class="btn btn-primary card__title"
+          data-toggle="collapse"
+          data-target="#collapseExample"
+          aria-expanded="false"
+        ></h2>
 
-      <div class="collapse" id="collapseExample">
-        <iframe
-          id="player"
-          type="text/html"
-          src="http://www.youtube.com/embed/OGT3b1z-zJo?origin=http://example.com"
-          frameborder="0"
-        ></iframe></div
-    ></template>
+        <div class="collapse" id="collapseExample">
+          <p class="card__author"></p>
+          <p class="card__date"></p>
+          <iframe
+            class="card__iframe"
+            id="player"
+            type="text/html"
+            src="http://www.youtube.com/embed/OGT3b1z-zJo?origin=http://example.com"
+            frameborder="0"
+          >
+          </iframe>
+        </div>
+      </li>
+    </template>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

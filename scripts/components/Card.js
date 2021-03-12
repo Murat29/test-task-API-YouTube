@@ -1,38 +1,30 @@
 export class Card {
   constructor(data, cardSelector) {
     this._cardSelector = cardSelector;
-    this._data = data;
-    this._title = data.name;
-    this._image = data.link;
-    this._like = data.likes.length;
-    this._openImgPopup = openImgPopup;
-    this._ownerId = data.owner._id;
-    this._myId = myId;
-    this._cardId = data._id;
-    this._сonsentPopup = сonsentPopup;
-    this._сonsentSabmitBatton = сonsentSabmitBatton;
-    this._apiDeleteCard = apiDeleteCard;
-    this._apiLike = apiLike;
+    this._title = data.title;
+    this._channelTitle = data.channelTitle;
+    this._publishTime = data.publishTime;
+    this._videoId = data.videoId;
   }
 
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".cards__card")
+      .content.querySelector(".card")
       .cloneNode(true);
     return cardElement;
   }
 
   generateCard() {
     this._element = this._getTemplate();
-    this._cardImage = this._element.querySelector(".cards__image");
-    this._element.querySelector(".cards__title").textContent = this._title;
-    this._cardImage.src = this._image;
-    this._cardImage.alt = `Изображение места ${this._title}`;
-    this._likeNumber = this._element.querySelector(".card__like-number");
-    this._installLike(this._data);
-    this._setEventListeners();
-
+    this._cardTitle = this._element.querySelector(".card__title");
+    this._cardTitle.textContent = this._title;
+    this._cardTitle.setAttribute("data-target", this._videoId);
+    this._element.querySelector(".card__author").textContent = this._channelTitle;
+    this._element.querySelector(".card__date").textContent = this._publishTime;
+    this._element.querySelector(
+      ".card__iframe"
+    ).src = `http://www.youtube.com/embed/${this._videoId}?origin=http://example.com`;
     return this._element;
   }
 }

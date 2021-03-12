@@ -4,9 +4,9 @@ export class Api {
     this.url = config.url;
   }
 
-  getVideos() {
+  getVideos(request) {
     return fetch(
-      `${this.url}/search?part=snippet&q=swimming&type=video&maxResults=3&order=date&key=AIzaSyC4EGmQM2Xt8rpupN3FmF9gHOFNBM_wA1o`,
+      `${this.url}/search?part=snippet&q=${request}&type=video&maxResults=10&order=date&key=AIzaSyBjUM_hSMEJKkg-_ui7dM1vCN3siDN-474`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export class Api {
 
   getStatisticscVideos(videoId) {
     return fetch(
-      `${this.url}/videos?part=statistics&id=${videoId}&key=AIzaSyC4EGmQM2Xt8rpupN3FmF9gHOFNBM_wA1o`,
+      `${this.url}/videos?part=statistics&id=${videoId}&key=AIzaSyBjUM_hSMEJKkg-_ui7dM1vCN3siDN-474`,
       {
         headers: {
           "Content-Type": "application/json",
