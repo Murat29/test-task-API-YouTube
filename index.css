@@ -8,6 +8,7 @@
 
 .query {
   min-height: 24px;
+  max-width: 720px;
 }
 
 .card-element {

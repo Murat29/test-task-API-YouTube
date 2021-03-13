@@ -16,9 +16,14 @@ function renderer(item, index) {
 }
 form.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  const request = formInput.value;
+  if (!request) {
+    query.textContent = "Введите запрос в поисковую строку";
+    return;
+  }
   clearSearch();
   spinner.classList.remove("d-none");
-  const request = formInput.value;
+
   api
     .getVideos(request)
     .then((date) => {
@@ -46,7 +51,6 @@ form.addEventListener("submit", (evt) => {
               })
           )
           .then((videos) => {
-            console.log(videos);
             query.textContent = `Результат поиска по запросу: ${request}`;
             instanceСlassSection.renderItems(videos);
             resolve();

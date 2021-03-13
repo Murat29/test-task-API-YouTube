@@ -1,4 +1,7 @@
 const key = "AIzaSyC4EGmQM2Xt8rpupN3FmF9gHOFNBM_wA1o";
+const headers = {
+  "Content-Type": "application/json",
+};
 
 export class Api {
   constructor(config) {
@@ -10,18 +13,14 @@ export class Api {
     return fetch(
       `${this.url}/search?part=snippet&q=${request}&type=video&maxResults=10&order=date&key=${key}`,
       {
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: headers,
       }
     ).then(this._getResponseData);
   }
 
   getStatisticscVideos(videoId) {
     return fetch(`${this.url}/videos?part=statistics&id=${videoId}&key=${key}`, {
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: headers,
     }).then(this._getResponseData);
   }
 
