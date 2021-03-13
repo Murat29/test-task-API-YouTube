@@ -32,22 +32,26 @@ form.addEventListener("submit", (evt) => {
       });
     })
     .then((videos) => {
-      api
-        .getStatisticscVideos(videos.map((video) => video.videoId).join())
-        .then((date) =>
-          videos.map((video, i) => {
-            video.viewCount = date.items[i].statistics.viewCount;
-            return video;
-          })
-        )
-        .then((videos) => {
-          videos.sort((a, b) => {
-            return b.viewCount - a.viewCount;
+      return new Promise((resolve) => {
+        api
+          .getStatisticscVideos(videos.map((video) => video.videoId).join())
+          .then((date) =>
+            videos
+              .map((video, i) => {
+                video.viewCount = date.items[i].statistics.viewCount;
+                return video;
+              })
+              .sort((a, b) => {
+                return b.viewCount - a.viewCount;
+              })
+          )
+          .then((videos) => {
+            console.log(videos);
+            query.textContent = `Результат поиска по запросу: ${request}`;
+            instanceСlassSection.renderItems(videos);
+            resolve();
           });
-          query.textContent = `Результат поиска по запросу: ${request}`;
-          instanceСlassSection.renderItems(videos);
-        })
-        .catch((err) => console.log(err));
+      });
     })
     .catch((err) => console.log(err))
     .finally(() => {
