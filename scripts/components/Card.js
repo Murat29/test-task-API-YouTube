@@ -35,7 +35,7 @@ export class Card {
     ).textContent = `Дата публикации: ${this._publishTime}`;
     this._element.querySelector(
       ".card__iframe"
-    ).src = `http://www.youtube.com/embed/${this._videoId}?origin=http://example.com`;
+    ).src = `https://www.youtube.com/embed/${this._videoId}?origin=http://example.com`;
     return this._element;
   }
 }
