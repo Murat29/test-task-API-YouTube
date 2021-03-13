@@ -1,3 +1,5 @@
+const key = "AIzaSyC4EGmQM2Xt8rpupN3FmF9gHOFNBM_wA1o";
+
 export class Api {
   constructor(config) {
     this.headers = config.headers;
@@ -6,7 +8,7 @@ export class Api {
 
   getVideos(request) {
     return fetch(
-      `${this.url}/search?part=snippet&q=${request}&type=video&maxResults=10&order=date&key=AIzaSyBjUM_hSMEJKkg-_ui7dM1vCN3siDN-474`,
+      `${this.url}/search?part=snippet&q=${request}&type=video&maxResults=10&order=date&key=${key}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -16,14 +18,11 @@ export class Api {
   }
 
   getStatisticscVideos(videoId) {
-    return fetch(
-      `${this.url}/videos?part=statistics&id=${videoId}&key=AIzaSyBjUM_hSMEJKkg-_ui7dM1vCN3siDN-474`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then(this._getResponseData);
+    return fetch(`${this.url}/videos?part=statistics&id=${videoId}&key=${key}`, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(this._getResponseData);
   }
 
   _getResponseData(res) {
