@@ -19,23 +19,17 @@
       <button type="button" class="btn btn-primary button-search">Найти</button>
     </div>
 
-    <ul class="container"></ul>
+    <ul class="container accordion cards-container" id="accordion-cards"></ul>
 
     <template class="card-template">
-      <li class="card">
-        <h2
-          class="btn btn-primary card__title"
-          data-toggle="collapse"
-          data-target="#collapseExample"
-          aria-expanded="false"
-        ></h2>
+      <li class="card-element">
+        <p class="card__title" data-toggle="collapse" aria-expanded="false"></з>
 
-        <div class="collapse" id="collapseExample">
+        <div class="collapse card card__hidden-container" data-parent="#accordion-cards">
           <p class="card__author"></p>
           <p class="card__date"></p>
-          <iframe
-            class="card__iframe"
-            id="player"
+          <iframe 
+            class="card__iframe card-img-top"
             type="text/html"
             src="http://www.youtube.com/embed/OGT3b1z-zJo?origin=http://example.com"
             frameborder="0"

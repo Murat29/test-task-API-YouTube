@@ -1,9 +1,20 @@
 import { Api } from "./components/Api.js";
+import { Section } from "./components/Section.js";
+import { Card } from "./components/Card.js";
 import test from "../test.js";
 
 const api = new Api({
   url: "https://www.googleapis.com/youtube/v3",
 });
+
+const cardsContainer = document.querySelector(".cards-container");
+const instanceСlassSection = new Section(renderer, cardsContainer);
+
+function renderer(item) {
+  const instanceСlassСard = new Card(item, ".card-template");
+  const newCard = instanceСlassСard.generateCard();
+  instanceСlassSection.setItemPrepend(newCard);
+}
 
 document.querySelector(".button-search").addEventListener("click", () => {
   const request = document.querySelector(".input-search").value;
@@ -20,7 +31,7 @@ document.querySelector(".button-search").addEventListener("click", () => {
       });
     })
     .then((videos) => {
-      return api
+      api
         .getStatisticscVideos(videos.map((video) => video.videoId).join())
         .then((date) =>
           videos.map((video, i) => {
@@ -30,32 +41,12 @@ document.querySelector(".button-search").addEventListener("click", () => {
         )
         .then((videos) => {
           videos.sort((a, b) => {
-            console.log(a);
             return b.viewCount - a.viewCount;
           });
-          console.log(videos);
         })
         .catch((err) => console.log(err));
     })
-
     .catch((err) => console.log(err));
 });
 
-// const instanceСlassSection = new Section(renderer, cardsContainer);
-
-// function renderer(item) {
-//   const instanceСlassСard = new Card(
-//     item,
-//     ".card-template",
-//     imgPopup.handleCardClick.bind(imgPopup),
-//     сonsentPopup,
-//     myId,
-//     сonsentSabmitBatton,
-//     apiDeleteCard,
-//     apiLike
-//   );
-//   const newCard = instanceСlassСard.generateCard();
-//   instanceСlassSection.setItemPrepend(newCard);
-// }
-
-// instanceСlassSection.renderItems(initialCardsList);
+instanceСlassSection.renderItems(test);

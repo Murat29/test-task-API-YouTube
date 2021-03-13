@@ -10,7 +10,7 @@ export class Card {
   _getTemplate() {
     const cardElement = document
       .querySelector(this._cardSelector)
-      .content.querySelector(".card")
+      .content.querySelector(".card-element")
       .cloneNode(true);
     return cardElement;
   }
@@ -19,7 +19,9 @@ export class Card {
     this._element = this._getTemplate();
     this._cardTitle = this._element.querySelector(".card__title");
     this._cardTitle.textContent = this._title;
-    this._cardTitle.setAttribute("data-target", this._videoId);
+    this._cardTitle.setAttribute("data-target", `#${this._videoId}`);
+    this._element.querySelector(".card__hidden-container").setAttribute("id", this._videoId);
+
     this._element.querySelector(".card__author").textContent = this._channelTitle;
     this._element.querySelector(".card__date").textContent = this._publishTime;
     this._element.querySelector(
