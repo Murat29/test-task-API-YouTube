@@ -19,8 +19,10 @@ form.addEventListener("submit", (evt) => {
   const request = formInput.value;
   if (!request) {
     query.textContent = "Введите запрос в поисковую строку";
+    clearSearch();
     return;
   }
+  query.textContent = "";
   clearSearch();
   spinner.classList.remove("d-none");
 
@@ -64,7 +66,6 @@ form.addEventListener("submit", (evt) => {
 });
 
 function clearSearch() {
-  query.textContent = "";
   while (cardsContainer.firstChild) {
     cardsContainer.removeChild(cardsContainer.lastChild);
   }
