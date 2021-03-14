@@ -10,4 +10,4 @@
 
 Ели видео не ищутся, значит квота на API закончилась. Попропуйте завтра.
 
-### [Демонстрация](https://murat29.github.io/test-task-API-YouTube/)
+### [Демонстрация](https://murat29.github.io/test-task-API-YouTube/index.html)
